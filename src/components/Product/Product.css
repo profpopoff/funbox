@@ -1,0 +1,157 @@
+.product {
+   --border-color: #1698D9;
+   --default-hover-color: #2EA8E6;
+
+   position: relative;
+   font-size: clamp(.8rem, 2vw, 1.2rem);
+   width: 20em;
+}
+
+.card {
+   --background-color: #fff;
+   --acive-color: #D91667;
+   --acive-hover-color: #E52E7A;
+   --disabled-color: #B3B3B3;
+   --border-width: .5em;
+   --edge-size: 3em;
+   --border-radius: calc(2 * var(--border-width));
+
+   position: relative;
+   height: 100%;
+   padding: 1.3em 3em 16em;
+   border-radius: 1rem;
+   background-color: var(--background-color);
+   border-radius: var(--border-radius);
+   overflow: hidden;
+   clip-path: polygon(var(--edge-size) 0%, 100% 0, 100% 100%, 0 100%, 0% var(--edge-size));
+   color: #000;
+   cursor: pointer;
+}
+
+.card:hover {
+   --border-color: var(--default-hover-color);
+}
+
+.card::before,
+.card::after {
+   content: "";
+   position: absolute;
+   pointer-events: none;
+   transition: all .3s ease-in-out;
+}
+
+.active {
+   --border-color: var(--acive-color);
+}
+
+.active:hover {
+   --border-color: var(--acive-hover-color);
+}
+
+.disabled {
+   --border-color: var(--disabled-color);
+   cursor: default;
+   pointer-events: none;
+   filter: grayscale(1);
+}
+
+.card::before {
+   inset: 0;
+   z-index: 10;
+   border-radius: var(--border-radius);
+   border: var(--border-width) solid var(--border-color);
+}
+
+.card::after {
+   top: 0;
+   left: 0;
+   width: var(--border-width);
+   height: calc(2.05 * var(--edge-size));
+   transform: rotate(45deg) translateY(calc(-.5 * var(--edge-size)));
+   background: var(--border-color);
+   z-index: 10;
+}
+
+.image {
+   position: absolute;
+   bottom: -8em;
+   left: 0em;
+   height: 24em;
+   object-fit: cover;
+}
+
+.description {
+   color: #666;
+   margin-bottom: .3125em;
+}
+
+.description:first-letter {
+   text-transform: capitalize;
+}
+
+.title {
+   font-size: 3em;
+}
+
+.title:first-letter {
+   text-transform: capitalize;
+}
+
+.flavour {
+   font-size: 1.5em;
+   margin-bottom: 1em;
+}
+
+.set {
+   display: flex;
+   flex-direction: column;
+   font-size: .875em;
+   color: #666666;
+}
+
+.number {
+   font-weight: 700;
+}
+
+.weight {
+   position: absolute;
+   bottom: 1em;
+   right: 1em;
+   width: 5em;
+   aspect-ratio: 1;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   background-color: var(--border-color);
+   border-radius: 50%;
+   color: #fff;
+   transition: all .3s ease-in-out;
+}
+
+.weight--value {
+   font-size: 2.625em;
+   line-height: 1em;
+}
+
+.weight--units {
+   font-size: 1.3125em;
+}
+
+.bottom-text {
+   position: absolute;
+   top: calc(100% + 1rem);
+   text-align: center;
+   width: 100%;
+}
+
+.link {
+   color: var(--border-color);
+   cursor: pointer;
+   text-decoration: underline;
+   transition: color .3s ease-in-out;
+}
+
+.link:hover {
+   --border-color: var(--default-hover-color);
+}
